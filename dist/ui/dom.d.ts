@@ -1,0 +1,2 @@
+export declare const el: <K extends keyof HTMLElementTagNameMap>(tag: K, props?: Partial<HTMLElementTagNameMap[K]>, children?: (Node | string)[]) => HTMLElementTagNameMap[K];
+//# sourceMappingURL=dom.d.ts.map
