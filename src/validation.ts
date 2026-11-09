@@ -1,5 +1,12 @@
-import type { Base } from './digits.js';
+import { createDigitValidator, type Base } from './digits.js';
 
-export const isValidGuess = (_guess: string, _length: number, _base: Base): boolean => {
-  throw new Error('Not implemented');
+export const isValidGuess = (guess: string, length: number, base: Base): boolean => {
+  const isDigit = createDigitValidator(base);
+  const digits = [...guess.toLowerCase()];
+
+  const hasCorrectLength = digits.length === length;
+  const hasOnlyValidDigits = digits.every(isDigit);
+  const hasNoRepeats = new Set(digits).size === digits.length;
+
+  return hasCorrectLength && hasOnlyValidDigits && hasNoRepeats;
 };
