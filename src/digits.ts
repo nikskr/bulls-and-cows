@@ -1,7 +1,9 @@
 export type Base = 2 | 8 | 10 | 16;
 
-export const createDigitValidator =
-  (_base: Base) =>
-  (_char: string): boolean => {
-    throw new Error('Not implemented');
-  };
+const ALL_DIGITS = '0123456789abcdef';
+
+export const createDigitValidator = (base: Base) => {
+  const allowedDigits = ALL_DIGITS.slice(0, base);
+
+  return (char: string): boolean => char.length === 1 && allowedDigits.includes(char.toLowerCase());
+};
